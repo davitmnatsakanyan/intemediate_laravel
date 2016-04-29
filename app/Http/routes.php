@@ -11,6 +11,20 @@
 |
 */
 
+Route::get('/home', function () {
+    return view('welcome');
+});
 Route::get('/', function () {
     return view('welcome');
 });
+
+//register users
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+//authenticate users
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+
+//user logout
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
