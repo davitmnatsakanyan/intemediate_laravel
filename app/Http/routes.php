@@ -15,7 +15,12 @@ Route::get('/home', function () {
     return view('welcome');
 });
 Route::get('/', function () {
-    return view('welcome');
+    if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin')){
+        return view('welcome');
+    }
+    else{
+        echo 'Please login as admin';
+    }
 });
 
 //register users
